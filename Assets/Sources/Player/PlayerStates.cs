@@ -6,10 +6,10 @@ public sealed class PlayerStates
 {
     // Movement
     public float FlightSpeed { get; } = 0.1f;
-    public float SteeringSpeed { get; } = 0.1f;
-    public Vector3 SteeringTiltAngle { get; } = new Vector3(0, 12f, 22f);
-    public float SteeringTiltSpeed { get; } = 15f;
-
+    public float SteeringSpeed { get; } = 4f;
+    public Vector3 SteeringTiltAngle { get; } = new Vector3(0, 16f, 22f);
+    public float SteeringTiltSpeed { get; } = 8f;
+    public float ShakeStrength { get; } = 0.1f;
 
     private static PlayerStates instance;
     public static PlayerStates Instance

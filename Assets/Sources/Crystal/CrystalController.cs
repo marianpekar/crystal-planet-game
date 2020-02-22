@@ -4,21 +4,34 @@ using UnityEngine;
 
 public class CrystalController : MonoBehaviour
 {
-    private CrystalManager crystalManager;
+    public CrystalManager CrystalManager { get; set; }
+
+    private bool shouldMove = true;
+
+    void Start()
+    {
+        PlayerEvents.Instance.OnPlayerDied.Add(StopMovement);
+    }
 
     void Update()
     {
-        transform.Translate(-Vector3.forward * PlayerStates.Instance.FlightSpeed * Time.deltaTime, Space.World);
+        if(shouldMove)
+            transform.Translate(-Vector3.forward * PlayerStates.Instance.FlightSpeed * Time.deltaTime, Space.World);
     }
 
-    public void SetCrystalManager(CrystalManager crystalManager)
+    private void StopMovement()
     {
-        this.crystalManager = crystalManager;
+        shouldMove = false;
+    }
+
+    public void Respawn()
+    {
+        CrystalManager.RespawnCrystal(transform);
     }
 
     private void OnTriggerEnter(Collider collider)
     {
         if(collider.CompareTag("Respawn"))
-            crystalManager.RespawnCrystal(transform);
+            Respawn();
     }
 }

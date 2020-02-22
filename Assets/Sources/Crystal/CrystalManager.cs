@@ -25,7 +25,7 @@ public class CrystalManager : MonoBehaviour
         foreach (Transform crystal in crystals)
         {
             if(crystal.CompareTag("Crystal"))
-                crystal.gameObject.GetComponent<CrystalController>().SetCrystalManager(this);
+                crystal.gameObject.GetComponent<CrystalController>().CrystalManager = this;
 
             RespawnCrystal(crystal);
         }

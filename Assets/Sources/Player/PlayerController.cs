@@ -16,8 +16,16 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 steering;
 
+    void Start()
+    {
+        PlayerEvents.Instance.OnPlayerDied.Add(DestroyShip);
+    }
+
     void Update()
     {
+        if (PlayerStates.Instance.IsDead)
+            return;
+
         GatherInputs();
         Move();
         TiltBody();
@@ -55,10 +63,26 @@ public class PlayerController : MonoBehaviour
                                                         PlayerStates.Instance.SteeringTiltSpeed * Time.deltaTime);
 
     }
-
     private void ShakeBody()
     {
         float noise = Mathf.PerlinNoise(Random.Range(0f, PlayerStates.Instance.ShakeStrength), Random.Range(0f, PlayerStates.Instance.ShakeStrength));
         body.transform.position = new Vector3(body.transform.position.x, Mathf.Sin(noise), body.transform.position.z);
+    }
+
+    private void DestroyShip()
+    {
+        
+        gameObject.SetActive(false);
+    }
+
+    void OnTriggerEnter(Collider collider)
+    {
+        if (collider.CompareTag("Crystal"))
+        {
+            collider.gameObject.GetComponent<CrystalController>().Respawn();
+            PlayerManager.Instance.TakeDamage();
+        }
+
+        Debug.Log($"Health: {PlayerStates.Instance.Health}");
     }
 }

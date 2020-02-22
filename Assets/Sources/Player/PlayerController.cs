@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     KeyCode rightKey = KeyCode.W;
 
+    [SerializeField] 
+    KeyCode respawnKey = KeyCode.R;
+
     [SerializeField]
     GameObject body;
 
@@ -18,15 +21,17 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        PlayerEvents.Instance.OnPlayerDied.Add(DestroyShip);
+        PlayerEvents.Instance.OnPlayerDied.Add(DisablePlayer);
+        PlayerEvents.Instance.OnPlayerRespawned.Add(EnablePlayer);
     }
 
     void Update()
     {
+        GatherInputs();
+
         if (PlayerStates.Instance.IsDead)
             return;
 
-        GatherInputs();
         Move();
         TiltBody();
         ShakeBody();
@@ -40,6 +45,9 @@ public class PlayerController : MonoBehaviour
             steering.x = PlayerStates.Instance.SteeringSpeed;
         else
             steering = Vector3.zero;
+
+        if (Input.GetKey(respawnKey))
+            PlayerManager.Instance.RespawnPlayer();
     }
 
     private void Move()
@@ -69,10 +77,32 @@ public class PlayerController : MonoBehaviour
         body.transform.position = new Vector3(body.transform.position.x, Mathf.Sin(noise), body.transform.position.z);
     }
 
-    private void DestroyShip()
+    private void DisablePlayer()
     {
-        
-        gameObject.SetActive(false);
+        gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
+        foreach (var light in GetComponentsInChildren<Light>())
+        {
+            light.enabled = false;
+        }
+
+        foreach (var particleSystem in GetComponentsInChildren<ParticleSystem>())
+        {
+            particleSystem.Stop();
+        }
+    }
+
+    private void EnablePlayer()
+    {
+        gameObject.GetComponentInChildren<MeshRenderer>().enabled = true;
+        foreach (var light in GetComponentsInChildren<Light>())
+        {
+            light.enabled = true;
+        }
+
+        foreach (var particleSystem in GetComponentsInChildren<ParticleSystem>())
+        {
+            particleSystem.Play();
+        }
     }
 
     void OnTriggerEnter(Collider collider)

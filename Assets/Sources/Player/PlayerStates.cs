@@ -14,8 +14,9 @@ public sealed class PlayerStates
     // Health & Damage
     public bool IsDead { get; set; } = false;
     public int Health { get; set; } = 100;
-    public int MinDamage { get; set; } = 4;
-    public int MaxDamage { get; set; } = 12;
+    public int MaxHealth { get; } = 100;
+    public int MinDamage { get; set; } = 25;
+    public int MaxDamage { get; set; } = 50;
 
 
     private static PlayerStates instance;

@@ -20,6 +20,13 @@ public sealed class PlayerManager
         }
     }
 
+    public void RespawnPlayer()
+    {
+        PlayerStates.Instance.Health = PlayerStates.Instance.MaxHealth;
+        PlayerStates.Instance.IsDead = false;
+        PlayerEvents.Instance.PlayerRespawned();
+    }
+
     private static PlayerManager instance;
     public static PlayerManager Instance
     {

@@ -11,6 +11,7 @@ public class CrystalController : MonoBehaviour
     void Start()
     {
         PlayerEvents.Instance.OnPlayerDied.Add(StopMovement);
+        PlayerEvents.Instance.OnPlayerRespawned.Add(ResetAll);
     }
 
     void Update()
@@ -22,6 +23,12 @@ public class CrystalController : MonoBehaviour
     private void StopMovement()
     {
         shouldMove = false;
+    }
+
+    private void ResetAll()
+    {
+        Respawn();
+        shouldMove = true;
     }
 
     public void Respawn()

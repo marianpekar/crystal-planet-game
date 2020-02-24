@@ -8,6 +8,7 @@ public sealed class PlayerEvents
     public List<Action> OnHealthChange { get; set; } = new List<Action>();
     public List<Action> OnPlayerDied { get; set; } = new List<Action>();
     public List<Action> OnPlayerRespawned { get; set; } = new List<Action>();
+    public List<Action> OnCrystalCollision { get; set; } = new List<Action>();
 
     public void HealthChanged() 
     {
@@ -22,6 +23,11 @@ public sealed class PlayerEvents
     public void PlayerRespawned()
     {
         InvokeActions(OnPlayerRespawned);
+    }
+
+    public void CrystalCollision()
+    {
+        InvokeActions(OnCrystalCollision);
     }
 
     private void InvokeActions(List<Action> actions)

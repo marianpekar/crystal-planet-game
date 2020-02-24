@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
         else
             steering = Vector3.zero;
 
-        if (Input.GetKey(respawnKey))
+        if (Input.GetKey(respawnKey) && PlayerStates.Instance.IsDead)
             PlayerManager.Instance.RespawnPlayer();
     }
 
@@ -105,8 +105,9 @@ public class PlayerController : MonoBehaviour
     {
         if (collider.CompareTag("Crystal"))
         {
-            collider.gameObject.GetComponent<CrystalController>().Respawn();
+            PlayerEvents.Instance.CrystalCollision();
             PlayerManager.Instance.TakeDamage();
+            collider.GetComponent<CrystalController>().Respawn();
         }
     }
 }

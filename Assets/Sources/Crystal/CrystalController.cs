@@ -39,6 +39,8 @@ public class CrystalController : MonoBehaviour
     private void OnTriggerEnter(Collider collider)
     {
         if(collider.CompareTag("Respawn"))
+        {
             Respawn();
+        }
     }
 }

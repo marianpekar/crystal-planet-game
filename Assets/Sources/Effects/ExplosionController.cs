@@ -5,7 +5,11 @@ using UnityEngine;
 public class ExplosionController : MonoBehaviour
 {
     [SerializeField]
-    ParticleSystem explosion;
+    ParticleSystem particleSystem;
+
+    [SerializeField]
+    AudioSource audioSource;
+
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +20,7 @@ public class ExplosionController : MonoBehaviour
     // Update is called once per frame
     void Explode()
     {
-        explosion.Play();
+        particleSystem.Play();
+        audioSource.Play();
     }
 }

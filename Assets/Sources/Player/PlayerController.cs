@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     GameObject[] engines;
 
+    [SerializeField]
+    AudioSource engineLoop;
+
     private Vector3 steering;
 
     void Start()
@@ -83,11 +86,13 @@ public class PlayerController : MonoBehaviour
     private void HidePlayer()
     {
         EnablePlayer(false);
+        engineLoop.Stop();
     }
 
     private void ShowPlayer()
     {
         EnablePlayer(true);
+        engineLoop.Play();
     }
 
     void EnablePlayer(bool enabled)

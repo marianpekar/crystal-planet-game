@@ -17,12 +17,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     GameObject body;
 
+    [SerializeField]
+    GameObject[] engines;
+
     private Vector3 steering;
 
     void Start()
     {
-        PlayerEvents.Instance.OnPlayerDied.Add(DisablePlayer);
-        PlayerEvents.Instance.OnPlayerRespawned.Add(EnablePlayer);
+        PlayerEvents.Instance.OnPlayerDied.Add(HidePlayer);
+        PlayerEvents.Instance.OnPlayerRespawned.Add(ShowPlayer);
     }
 
     void Update()
@@ -77,32 +80,25 @@ public class PlayerController : MonoBehaviour
         body.transform.position = new Vector3(body.transform.position.x, Mathf.Sin(noise), body.transform.position.z);
     }
 
-    private void DisablePlayer()
+    private void HidePlayer()
     {
-        gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
-        foreach (var light in GetComponentsInChildren<Light>())
-        {
-            light.enabled = false;
-        }
-
-        foreach (var particleSystem in GetComponentsInChildren<ParticleSystem>())
-        {
-            particleSystem.Stop();
-        }
+        EnablePlayer(false);
     }
 
-    private void EnablePlayer()
+    private void ShowPlayer()
     {
-        gameObject.GetComponentInChildren<MeshRenderer>().enabled = true;
-        foreach (var light in GetComponentsInChildren<Light>())
-        {
-            light.enabled = true;
-        }
+        EnablePlayer(true);
+    }
 
-        foreach (var particleSystem in GetComponentsInChildren<ParticleSystem>())
-        {
-            particleSystem.Play();
-        }
+    void EnablePlayer(bool enabled)
+    {
+        gameObject.GetComponentInChildren<MeshRenderer>().enabled = enabled;
+
+        foreach (var light in GetComponentsInChildren<Light>())
+            light.enabled = enabled;
+
+        foreach (GameObject engine in engines)
+            engine.SetActive(enabled);
     }
 
     void OnTriggerEnter(Collider collider)
@@ -112,7 +108,5 @@ public class PlayerController : MonoBehaviour
             collider.gameObject.GetComponent<CrystalController>().Respawn();
             PlayerManager.Instance.TakeDamage();
         }
-
-        Debug.Log($"Health: {PlayerStates.Instance.Health}");
     }
 }

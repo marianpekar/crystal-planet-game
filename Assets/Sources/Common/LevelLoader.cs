@@ -13,14 +13,19 @@ public class LevelLoader : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(loadGameKey))
-            SceneManager.LoadScene(GameSceneIndex);
-
-        foreach (Touch touch in Input.touches)
+        if(SystemInfo.deviceType == DeviceType.Desktop)
         {
-            if (touch.phase == TouchPhase.Began)
-            {
+            if (Input.GetKey(loadGameKey))
                 SceneManager.LoadScene(GameSceneIndex);
+        }
+        else
+        {
+            foreach (Touch touch in Input.touches)
+            {
+                if (touch.phase == TouchPhase.Began)
+                {
+                    SceneManager.LoadScene(GameSceneIndex);
+                }
             }
         }
     }

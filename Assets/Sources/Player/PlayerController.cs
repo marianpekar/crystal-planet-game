@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField]
+    float accelerationTreshhold = 0.12f;
 
     [SerializeField]
     KeyCode leftKey = KeyCode.A;
@@ -45,15 +47,35 @@ public class PlayerController : MonoBehaviour
 
     void GatherInputs()
     {
-        if (Input.GetKey(leftKey))
-            steering.x = -PlayerStates.Instance.SteeringSpeed;
-        else if (Input.GetKey(rightKey))
-            steering.x = PlayerStates.Instance.SteeringSpeed;
-        else
-            steering = Vector3.zero;
+        if(SystemInfo.deviceType == DeviceType.Desktop)
+        {
+            if (Input.GetKey(leftKey))
+                steering.x = -PlayerStates.Instance.SteeringSpeed;
+            else if (Input.GetKey(rightKey))
+                steering.x = PlayerStates.Instance.SteeringSpeed;
+            else
+                steering = Vector3.zero;
 
-        if (Input.GetKey(respawnKey) && PlayerStates.Instance.IsDead)
-            PlayerManager.Instance.RespawnPlayer();
+            if (Input.GetKey(respawnKey) && PlayerStates.Instance.IsDead)
+                PlayerManager.Instance.RespawnPlayer();
+        } 
+        else
+        {
+            foreach (Touch touch in Input.touches)
+            {
+                if (touch.phase == TouchPhase.Began && PlayerStates.Instance.IsDead)
+                {
+                    PlayerManager.Instance.RespawnPlayer();
+                }
+            }
+
+            if (Input.acceleration.x < -accelerationTreshhold)
+                steering.x = -PlayerStates.Instance.SteeringSpeed;
+            else if (Input.acceleration.x > accelerationTreshhold)
+                steering.x = PlayerStates.Instance.SteeringSpeed;
+            else
+                steering = Vector3.zero;
+        }
     }
 
     private void Move()

@@ -10905,6 +10905,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 086d610befb1f0440b0218c97ce7a3a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  accelerationTreshhold: 0.12
   leftKey: 97
   rightKey: 100
   respawnKey: 114
@@ -11895,8 +11896,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 32
-      minScalar: 24
+      scalar: 48
+      minScalar: 32
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -12211,7 +12212,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 100
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -12586,7 +12587,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 200
+        scalar: 20
         minScalar: 30
         maxCurve:
           serializedVersion: 2

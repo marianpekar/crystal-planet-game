@@ -8,4 +8,5 @@ The game has been made as a code example, though I've done my best to polish it 
 
 - Unity 2019.3.0f1
 - Blender 2.82
+- GIMP 2.10.14
 - Audacity

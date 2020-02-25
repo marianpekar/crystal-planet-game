@@ -29,6 +29,9 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        if (SystemInfo.deviceType != DeviceType.Desktop)
+            Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
         PlayerEvents.Instance.OnPlayerDied.Add(HidePlayer);
         PlayerEvents.Instance.OnPlayerRespawned.Add(ShowPlayer);
     }

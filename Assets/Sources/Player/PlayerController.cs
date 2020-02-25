@@ -53,9 +53,9 @@ public class PlayerController : MonoBehaviour
         if(SystemInfo.deviceType == DeviceType.Desktop)
         {
             if (Input.GetKey(leftKey))
-                steering.x = -PlayerStates.Instance.SteeringSpeed;
+                steering.x = -PlayerStates.Instance.SteeringStrength;
             else if (Input.GetKey(rightKey))
-                steering.x = PlayerStates.Instance.SteeringSpeed;
+                steering.x = PlayerStates.Instance.SteeringStrength;
             else
                 steering = Vector3.zero;
 
@@ -73,9 +73,9 @@ public class PlayerController : MonoBehaviour
             }
 
             if (Input.acceleration.x < -accelerationTreshhold)
-                steering.x = -PlayerStates.Instance.SteeringSpeed;
+                steering.x = -PlayerStates.Instance.SteeringStrength;
             else if (Input.acceleration.x > accelerationTreshhold)
-                steering.x = PlayerStates.Instance.SteeringSpeed;
+                steering.x = PlayerStates.Instance.SteeringStrength;
             else
                 steering = Vector3.zero;
         }

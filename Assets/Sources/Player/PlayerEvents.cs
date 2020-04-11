@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public sealed class PlayerEvents
 {
@@ -9,6 +10,7 @@ public sealed class PlayerEvents
     public List<Action> OnPlayerDied { get; set; } = new List<Action>();
     public List<Action> OnPlayerRespawned { get; set; } = new List<Action>();
     public List<Action> OnCrystalCollision { get; set; } = new List<Action>();
+    public List<Action> OnHealthRestored { get; set; } = new List<Action>();
 
     public void HealthChanged() 
     {
@@ -28,6 +30,11 @@ public sealed class PlayerEvents
     public void CrystalCollision()
     {
         InvokeActions(OnCrystalCollision);
+    }
+
+    public void HealthRestored()
+    {
+        InvokeActions(OnHealthRestored);
     }
 
     private void InvokeActions(List<Action> actions)

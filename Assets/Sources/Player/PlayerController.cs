@@ -137,7 +137,12 @@ public class PlayerController : MonoBehaviour
         {
             PlayerEvents.Instance.CrystalCollision();
             PlayerManager.Instance.TakeDamage();
-            collider.GetComponent<CrystalController>().Respawn();
+            collider.GetComponent<MovableObjectController>().Respawn();
+        }
+        else if (collider.CompareTag("Heart"))
+        {
+            PlayerManager.Instance.RestoreHealth();
+            collider.GetComponent<MovableObjectController>().Respawn();
         }
     }
 }

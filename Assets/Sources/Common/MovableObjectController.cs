@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CrystalController : MonoBehaviour
+public class MovableObjectController : MonoBehaviour
 {
-    public CrystalManager CrystalManager { get; set; }
+    public PoolManager PoolManager { get; set; }
 
     private bool shouldMove = true;
 
@@ -33,7 +33,7 @@ public class CrystalController : MonoBehaviour
 
     public void Respawn()
     {
-        CrystalManager.RespawnCrystal(transform);
+        PoolManager.Respawn(transform);
     }
 
     private void OnTriggerEnter(Collider collider)

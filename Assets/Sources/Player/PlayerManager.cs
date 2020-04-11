@@ -20,6 +20,16 @@ public sealed class PlayerManager
         }
     }
 
+    public void RestoreHealth()
+    {
+        if (PlayerStates.Instance.Health < PlayerStates.Instance.MaxHealth)
+        {
+            PlayerStates.Instance.Health += PlayerStates.Instance.HealthRestoration;
+            PlayerEvents.Instance.HealthChanged();
+            PlayerEvents.Instance.HealthRestored();
+        }
+    }
+
     public void RespawnPlayer()
     {
         PlayerStates.Instance.Health = PlayerStates.Instance.MaxHealth;

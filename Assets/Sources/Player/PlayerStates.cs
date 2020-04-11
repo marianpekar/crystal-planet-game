@@ -15,6 +15,7 @@ public sealed class PlayerStates
     // Health & Damage
     public bool IsDead { get; set; } = false;
     public float Health { get; set; } = 1.0f;
+    public float HealthRestoration { get; set; } = 0.2f;
     public float MaxHealth { get; } = 1.0f;
     public float MinDamage { get; set; } = 0.12f;
     public float MaxDamage { get; set; } = 0.24f;

@@ -5397,6 +5397,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 4.3963714
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 456e20d006dc689408a153c152cb9cbe,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 73ae8cb683928ab4e9313065e1b21ab0, type: 2}
     - target: {fileID: -927199367670048503, guid: 456e20d006dc689408a153c152cb9cbe,
         type: 3}
       propertyPath: m_Name
@@ -5732,7 +5737,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -10815,8 +10820,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -121, y: 122}
-  m_SizeDelta: {x: 48, y: 48}
+  m_AnchoredPosition: {x: -88.7, y: 88.8}
+  m_SizeDelta: {x: 32, y: 32}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &729239333
 MonoBehaviour:
@@ -11168,7 +11173,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -45, y: 46}
-  m_SizeDelta: {x: 200, y: 200}
+  m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &912197331
 MonoBehaviour:
@@ -11241,7 +11246,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -45, y: 46}
-  m_SizeDelta: {x: 200, y: 200}
+  m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &925771435
 MonoBehaviour:
@@ -11403,7 +11408,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.000015259, y: -150}
+  m_AnchoredPosition: {x: -1.5259, y: -116}
   m_SizeDelta: {x: 1280, y: 154.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &959696402
@@ -11426,7 +11431,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 0b8098bf08584e84495023dbd7f383a9, type: 3}
-    m_FontSize: 72
+    m_FontSize: 48
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -17416,6 +17421,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 4.3963714
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 456e20d006dc689408a153c152cb9cbe,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 73ae8cb683928ab4e9313065e1b21ab0, type: 2}
     - target: {fileID: -927199367670048503, guid: 456e20d006dc689408a153c152cb9cbe,
         type: 3}
       propertyPath: m_Name

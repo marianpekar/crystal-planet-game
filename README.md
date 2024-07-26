@@ -4,8 +4,6 @@ Crystal Planet is a casual accelerometer controlled game primarily for Android w
 
 The game has been made as a code example, though I've done my best to polish it on the visual and gameplay side as well.
 
-And it has been published on Google Play: https://play.google.com/store/apps/details?id=com.MarianPekar.CrystalPlanet
-
 ## Software Used
 
 - Unity 2019.3.0f1
